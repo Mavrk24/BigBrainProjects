@@ -5,22 +5,25 @@
  */
 package com.mycompany.bigbrainproject01;
 
-import java.util.Scanner;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 
 /**
  *
  * @author User
  */
 public class NewMain {
-   public static int[] arr = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+   public static int[] arr = new int[]{0,15,44,60,65}; 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        System.out.print("Enter search number-- ");  
-        int input_int= sc.nextInt(); 
-        System.out.println(binarySearch(arr,input_int));
+                int random_int = ThreadLocalRandom.current().nextInt(0,4);
+       int input_int  = arr[random_int];
+       int amount = binarySearch(arr,input_int);
+        System.out.println("The amount of iron per dose required is: " + input_int +"mg.");
+        System.out.println(Pharmacy(amount));
          
          
     }
@@ -42,5 +45,24 @@ public class NewMain {
   // End Condition: left > right
   return -1;
 }
-    
+
+ public static String Pharmacy(int a){
+     if (a == 0){
+         return "No Rx should be prescribed";
+     }
+     else if (a == 1){
+         return "Rx: BProtected Pedia, Fer-In-Sol, Fer-Iron (drops) [15 mg/1 mL]";
+     }
+     else if (a == 2){
+         return "Rx: FeroSul (elixir) [40 mg/5 mL]";
+     }
+     else if (a == 3){
+         return "Rx: Iron syrups [60 mg/5 mL]";
+     }
+     else if (a == 4){
+         return "Rx: Ferro-Bob, FerrouSul (tablets) [65 mg/325 mg]";
+     }
+         return "";
+ }
+ 
 }
